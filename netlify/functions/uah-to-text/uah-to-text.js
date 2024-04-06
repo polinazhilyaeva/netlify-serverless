@@ -57,14 +57,14 @@ function numberToUkrainianText(number) {
   if (units === 1 && tensPlace !== 1) {
       integerText = integerText.replace(/один$/, "одна");
       integerText = integerPart === 1 ? "одна" : integerText;
-      currencyText = "гривня";
+  } else if (units === 2 && tensPlace !== 1) {
+      integerText = integerText.replace(/два$/, "дві");
+      integerText = integerPart === 1 ? "дві" : integerText;
   } else if (units >= 2 && units <= 4 && tensPlace !== 1) {
       integerText = convertNumber(integerPart, true);
-      currencyText = "гривні";
-  } else {
-      currencyText = pluralForm(integerPart, "гривня", "гривні", "гривень");
   }
 
+  let currencyText = "грн";
   return `${integerText} ${currencyText} ${decimalPart.toString().padStart(2, '0')} коп.`.trim();
 }
 
