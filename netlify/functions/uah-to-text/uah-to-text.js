@@ -86,7 +86,7 @@ const handler = async (event) => {
     const body = event.body
     return {
       statusCode: 200,
-      body: body,
+      body: JSON.stringify({ result: body.number }),
 
     }
   } catch (error) {
