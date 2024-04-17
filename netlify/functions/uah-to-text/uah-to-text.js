@@ -68,12 +68,25 @@ function numberToUkrainianText(number) {
   return `${integerText} ${currencyText} ${decimalPart.toString().padStart(2, '0')} коп.`.trim();
 }
 
-const handler = async (event) => {
+/* const handler = async (event) => {
   try {
     const number = event.queryStringParameters.number || 1
     return {
       statusCode: 200,
       body: JSON.stringify({ result: numberToUkrainianText(number) }),
+
+    }
+  } catch (error) {
+    return { statusCode: 500, body: error.toString() }
+  }
+} */
+
+const handler = async (event) => {
+  try {
+    const number = event.body
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ result: body }),
 
     }
   } catch (error) {
