@@ -83,7 +83,7 @@ function numberToUkrainianText(number) {
 
 const handler = async (event) => {
   try {
-    const number = event.body
+    const body = event.body
     return {
       statusCode: 200,
       body: JSON.stringify({ result: body }),
